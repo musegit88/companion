@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Clipboard } from "lucide-react";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
+import AudioPlayer from "./audio-player";
 
 export type ChatMessageProps = {
   role: "system" | "user";
@@ -61,14 +62,17 @@ const ChatMessage = ({
         <UserAvatar userImage={user?.imageUrl} userName={user?.username} />
       )}
       {role !== "user" && !isLoading && (
-        <Button
-          size="icon"
-          variant="ghost"
-          onClick={onCopy}
-          className="opacity-0 group-hover:opacity-100 transition"
-        >
-          <Clipboard className="w-4 h-4" />
-        </Button>
+        <div className="flex flex-col">
+          <Button
+            size="icon"
+            variant="ghost"
+            onClick={onCopy}
+            className="opacity-0 group-hover:opacity-100 transition"
+          >
+            <Clipboard className="w-4 h-4" />
+          </Button>
+          <AudioPlayer text={content} />
+        </div>
       )}
     </div>
   );

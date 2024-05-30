@@ -39,7 +39,7 @@ const ChatMessages = ({
     <div className="flex-1 overflow-y-auto pr-4">
       <ChatMessage
         isLoading={firstLoading}
-        content={`Hello, I am ${character.name}, ${character.description}`}
+        content={`Hello, I am ${character.name}, ${character.description}.`}
         imageUrl={character.imageUrl}
         role="system"
       />
