@@ -13,10 +13,23 @@ export async function generateMetadata({
     where: {
       id: params.chatId,
     },
+    include: {
+      category: true,
+    },
   });
   return {
     title: `Chat with ${character?.name}`,
-    keywords: [`${character?.name} AI companion,${character?.name} AI Chatbot`],
+    keywords: [
+      `${character?.name} ai companion,${character?.name} ai Chatbot,${character?.name} ai, ${character?.name},${character?.category.name} ai companion,${character?.category.name} ai chatbot`,
+    ],
+    openGraph: {
+      url: "https://ai-companions-alpha.vercel.app",
+      images: [
+        {
+          url: character?.imageUrl as string,
+        },
+      ],
+    },
   };
 }
 

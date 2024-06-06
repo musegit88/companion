@@ -45,6 +45,15 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "M4 Dev" }],
   creator: "M4 Dev",
+  openGraph: {
+    url: "https://ai-companions-alpha.vercel.app",
+    siteName: "Companion",
+    images: [
+      {
+        url: "https://utfs.io/f/8f1a9657-bce1-47f2-b07c-3172c25d7ff6-7jkpqi.png",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
