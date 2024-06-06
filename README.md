@@ -29,7 +29,7 @@ Inspiration [`a16z-infra`](https://github.com/a16z-infra/companion-app/blob/main
 - Vector Database: [Supabase Vector Database](https://supabase.com/)
 - Embeddings Model: [OpenAI Text-embedding-ada-002-v2](https://openai.com/)
 - LLM orchestration: [Langchain.js](https://js.langchain.com/docs/)
-- AI Model: [Replicate (Meta's LLaMA-2-70b-Chat)](https://replicate.com/meta/llama-2-70b-chat)
+- AI Model: [Cloudflare (meta/llama-2-7b-chat-int8)](https://developers.cloudflare.com/workers-ai/models/)
 - Text Streaming: [ai sdk](https://github.com/vercel-labs/ai)
 - Conversation history: [Upstash](https://upstash.com/)
 - File Storage: [Uploadthing](https://Uploadthing.com/)
@@ -81,9 +81,10 @@ yarn install
    UPSTASH_REDIS_REST_TOKEN="your_upstash_rest_token"
    UPLOADTHING_SECRET="your_uploadthing_secret"
    UPLOADTHING_APP_ID="your_uploadthing_app_id"
-   DATABASE_URL="your_supabase__database_url
-   "
+   DATABASE_URL="your_supabase__database_url"
    OPENAI_API_KEY="your_openai_api_key"
+   WORKERS_AI_API_TOKEN="your_workers_ai_api_key"
+   CLOUDFLARE_ACCOUNT_ID="your_cloudflare_account_id"
    STRIPE_API_KEY="your_stripe_api_key"
    STRIPE_WEBHOOK_SECRET="our_stripe_webhook_secret"
    ```

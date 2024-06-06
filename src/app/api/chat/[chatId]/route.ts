@@ -51,7 +51,7 @@ export async function POST(
     const characterKey = {
       characterName,
       userId: user.id,
-      modelName: "llama2-13b",
+      modelName: "meta/llama-2-7b-chat-int8",
     };
 
     const memoryManager = await MemoryManager.getInstance();
@@ -69,50 +69,54 @@ export async function POST(
       recentChatHistory,
       characterName
     );
-    console.log(similarDocs);
+
     let relevantHistory = "";
 
     if (!!similarDocs && similarDocs.length !== 0) {
       relevantHistory = similarDocs.map((doc) => doc.pageContent).join("\n");
     }
 
-    const { stream, handlers } = LangChainStream();
+    const run = async (model: string, input: any) => {
+      const response = await fetch(
+        `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/ai/run/${model}`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.WORKERS_AI_API_TOKEN}`,
+          },
+          method: "POST",
+          body: JSON.stringify(input),
+        }
+      );
+      const result = await response.json();
+      return result;
+    };
 
-    const model = new Replicate({
-      model:
-        "meta/llama-2-70b-chat:02e509c789964a7ea8736978a43525956ef40397be9033abf9fd2badfe68c9e3",
-
-      input: {
-        max_length: 2048,
-      },
-      apiKey: process.env.REPLICATE_API_TOKEN,
-      callbacks: CallbackManager.fromHandlers(handlers),
+    const result = await run("@cf/meta/llama-2-7b-chat-int8", {
+      messages: [
+        {
+          role: "system",
+          content: String(
+            `
+                   ONLY generate NO more than four sentences as ${characterName}. DO NOT generate more than four sentences.
+                Make sure the output you generate starts with '${characterName}:' and ends with a period.
+        
+                ${character.instructions}
+        
+                Below are relevant details about ${characterName}'s past and the conversation you are in.
+                ${relevantHistory}
+                   `
+          ),
+        },
+        {
+          role: "user",
+          content: prompt,
+        },
+      ],
     });
-    model.verbose = true; //for debugging
-
-    const resp = String(
-      await model
-        .invoke(
-          `
-          ONLY generate NO more than four sentences as ${characterName}. DO NOT generate more than four sentences. 
-       Make sure the output you generate starts with '${characterName}:' and ends with a period.
-
-       ${character.instructions}
-
-       Below are relevant details about ${characterName}'s past and the conversation you are in.
-       ${relevantHistory}
-
-
-       ${recentChatHistory}\n${characterName}:
-          `
-        )
-        .catch(console.error)
-    );
-
+    const resp = result.result.response;
     const structured = resp.replaceAll(",", "");
     const chunks = structured.split("\n");
-    // const response = chunks[0];
-    const response = chunks.length > 1 ? chunks[chunks.length - 1] : chunks[0];
+    const response = chunks[0];
 
     await memoryManager.writeToHistory("" + response.trim(), characterKey);
     var Readable = require("stream").Readable;
