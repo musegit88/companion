@@ -9,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useAlertModal } from "../../../../../../../hooks/useAlertModal";
+import { useAlertModal } from "../../../../../../hooks/useAlertModal";
 import { useUser } from "@clerk/nextjs";
 import { Character, Message } from "@prisma/client";
 import { Edit, MessageSquareText, MoreHorizontal, Trash } from "lucide-react";
