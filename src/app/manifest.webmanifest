@@ -1,0 +1,45 @@
+{
+    "name": "Companion",
+    "short_name": "Companion",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "description": "Your personal AI companion",   
+    "icons": [
+          {
+            "src":"/images/maskable_icon_x192.png",
+            "sizes":"192x192",
+            "purpose":"maskable"
+          },
+          {
+            "src":"/images/maskable_icon_x512.png",
+            "sizes":"512x512",
+            "purpose":"maskable"
+          }
+        ],
+    "theme_color": "#ffffff",
+    "shortcuts":[
+      {
+        "name":"Companion",
+        "short_name":"Companion",
+        "description":"Your personal AI companion",
+        "url":"/",
+        "icons":[{"src":"/images/comapnion192px.png","sizes":"192x192"}]
+      }
+    ],
+    "screenshots":[
+      {
+        "src":"./images/screenshot540.png",
+        "type":"image/png",
+        "sizes":"540x720",
+        "form_factor":"narrow"
+      },
+      {
+        "src":"/images/screenshot720.png",
+        "type":"image/png",
+        "sizes":"720x540",
+        "form_factor":"wide"
+      }
+    ],
+    "scope":"/src/app/"
+  }

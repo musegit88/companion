@@ -18,6 +18,7 @@ export const fetchAudio = async (text: string | undefined, apiUrl: string) => {
     body: text,
     headers: { "Content-type": "application/json" },
   });
+  console.log(response);
   const blob = response.blob();
   audioCache.set(cacheKey, blob);
   return blob;
