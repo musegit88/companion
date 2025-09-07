@@ -8,25 +8,20 @@ const AudioPlayer = ({ text }: { text: string | undefined }) => {
   const [audioSrc, setAudioSrc] = useState("");
   const apiUrl = "/api/tts";
   const playAudio = async () => {
-    const promise = new Promise<void>(async (resolve, reject) => {
-      try {
-        const audioBlob = await fetchAudio(text, apiUrl);
-        if (audioBlob) {
-          const audioUrl = URL.createObjectURL(audioBlob);
-          setAudioSrc(audioUrl);
-        }
-        resolve();
-      } catch (error) {
-        console.log(error);
-        reject();
+    try {
+      const audioBlob: String | Blob = await fetchAudio(text, apiUrl);
+      if (audioBlob instanceof Blob) {
+        const audioUrl = URL.createObjectURL(audioBlob);
+        setAudioSrc(audioUrl);
+        toast.success(
+          "The voice you are hearing is AI-generated and not a human voice."
+        );
+      } else {
+        toast.error("Something went wrong");
       }
-    });
-    toast.promise(promise, {
-      loading: "Generating",
-      success:
-        "The voice you are hearing is AI-generated and not a human voice.",
-      error: "error",
-    });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
