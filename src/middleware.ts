@@ -6,6 +6,8 @@ export default authMiddleware({
     "/api/uploadthing",
     "/favicon.ico",
     "/api/webhook/stripe",
+    "/manifest.ts",
+    "/manifest.webmanifest",
   ],
   ignoredRoutes: ["/api/uploadthing"],
 });
