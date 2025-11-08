@@ -21,6 +21,7 @@ text.txt
 notes.txt
 /assets
 txt.txt
+/src/scripts/
 
 # next.js
 /.next/
