@@ -1,6 +1,6 @@
 "use client";
 
-import { Bot, ChevronLeftSquare, ChevronRightSquare, Plus } from "lucide-react";
+import { Bot, PanelLeftClose, PanelLeftOpen, Plus } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   SignInButton,
@@ -43,7 +43,7 @@ const Sidebar = ({ isSubscribed }: SidebarProps) => {
         className="hidden md:block absolute top-4 left-4 cursor-pointer z-[999]"
         onClick={toggleSidebar}
       >
-        {isSidebarOpen ? <ChevronLeftSquare /> : <ChevronRightSquare />}
+        {isSidebarOpen ? <PanelLeftClose /> : <PanelLeftOpen />}
       </div>
       <div
         className={cn(
