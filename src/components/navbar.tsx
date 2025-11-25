@@ -33,8 +33,9 @@ const Navbar = ({ isSubscribed }: NavbarProps) => {
     <div className="md:hidden px-4 py-2 border-b dark:bg-[#171717]">
       <div className="flex items-center justify-between">
         <Link href="/" className="flex items-center">
-          <Bot className="mr-1" size={40} />
-          <h4>Companion</h4>
+          <h4 className="font-semibold text-2xl bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+            Companion
+          </h4>
         </Link>
         <SignedIn>
           {isLoaded ? (

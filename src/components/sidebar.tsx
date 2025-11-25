@@ -56,8 +56,9 @@ const Sidebar = ({ isSubscribed }: SidebarProps) => {
             <div className="flex flex-col w-full h-screen overflow-hidden">
               <div className="pl-5 pt-14 w-full">
                 <Link href="/" className="flex items-center">
-                  <Bot className="mr-1" size={40} />
-                  <h4>Companion</h4>
+                  <h4 className="font-semibold text-2xl bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                    Companion
+                  </h4>
                 </Link>
               </div>
               <div className="flex flex-col grow overflow-hidden mt-4">
