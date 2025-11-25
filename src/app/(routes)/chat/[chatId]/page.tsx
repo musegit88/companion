@@ -17,18 +17,32 @@ export async function generateMetadata({
       category: true,
     },
   });
+  if (!character) {
+    return {
+      title: "Character Not Found",
+      description: "Character Not Found",
+    };
+  }
   return {
     title: `Chat with ${character?.name}`,
     keywords: [
       `${character?.name} ai companion,${character?.name} ai Chatbot,${character?.name} ai, ${character?.name},${character?.category.name} ai companion,${character?.category.name} ai chatbot`,
     ],
     openGraph: {
+      title: `${character?.name} AI companion`,
+      description: `chat with ${character?.name}`,
       url: "https://ai-companions-alpha.vercel.app",
       images: [
         {
           url: character?.imageUrl as string,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${character?.name} AI companion`,
+      description: `chat with ${character?.name}`,
+      images: [`${character?.imageUrl as string}`],
     },
   };
 }

@@ -46,6 +46,8 @@ export const metadata: Metadata = {
   authors: [{ name: "M4 Dev" }],
   creator: "M4 Dev",
   openGraph: {
+    title: "Companion",
+    description: "Your personal AI companion",
     url: "https://ai-companions-alpha.vercel.app",
     siteName: "Companion",
     images: [
@@ -53,6 +55,28 @@ export const metadata: Metadata = {
         url: "https://utfs.io/f/8f1a9657-bce1-47f2-b07c-3172c25d7ff6-7jkpqi.png",
       },
     ],
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Companion",
+    description: "Your personal AI companion",
+    creator: "",
+    images: [
+      "https://utfs.io/f/8f1a9657-bce1-47f2-b07c-3172c25d7ff6-7jkpqi.png",
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
   },
 };
 

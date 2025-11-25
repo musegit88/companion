@@ -21,6 +21,7 @@ export default authMiddleware({
     "/images/screenshot720.png",
     "/images/Square44x44Logo.altform-unplated_targetsize-32.png",
     "/.well-known/appspecific/com.chrome.devtools.json",
+    "/robots.txt",
   ],
   ignoredRoutes: ["/api/uploadthing"],
 });
