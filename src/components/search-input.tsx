@@ -37,7 +37,7 @@ const SearchInput = () => {
   }, [debounceValue, router, categoryId]);
 
   return (
-    <div className="flex items-center  border border-slate-400  px-4 py-1 rounded-full">
+    <div className="flex items-center border border-slate-400 px-4 rounded-full w-full md:max-w-md">
       <Search className="w-4 h-4" />
       <Input
         onChange={onChange}

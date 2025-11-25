@@ -34,6 +34,7 @@ const Categories = ({ data }: CategoriesProps) => {
   return (
     <div className="flex w-full overflow-x-auto space-x-2 p-1">
       <Button
+        size="sm"
         onClick={() => handleClick(undefined)}
         className={cn(
           categoryId == undefined && "bg-slate-400 hover:bg-slate-400"
@@ -43,6 +44,7 @@ const Categories = ({ data }: CategoriesProps) => {
       </Button>
       {data?.map((category) => (
         <Button
+          size="sm"
           key={category.id}
           onClick={() => handleClick(category.id)}
           className={cn(

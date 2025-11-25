@@ -38,11 +38,11 @@ const PlusModal = () => {
       <DialogContent>
         <DialogHeader className="space-y-4">
           <DialogTitle className="text-center">
-            Upgrade to CharacterPlus
+            Upgrade to CompanionPlus
           </DialogTitle>
           <DialogDescription>
             Create <span className="text-cyan-500 mx-1">Custom AI</span>{" "}
-            Characters
+            Companion
           </DialogDescription>
           <Separator />
           <div className="flex justify-between">

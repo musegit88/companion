@@ -68,7 +68,7 @@ const Sidebar = ({ isSubscribed }: SidebarProps) => {
                     className="flex items-center gap-2 rounded-full shadow-md"
                     onClick={() => handleClick("/character/new")}
                   >
-                    <Plus size={28} />
+                    <Plus size={24} />
                     <p>Create</p>
                   </Button>
                 </div>

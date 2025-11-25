@@ -42,7 +42,7 @@ export default async function Home({ searchParams }: HomePageProps) {
 
   return (
     <div>
-      <div className="flex justify-end items-center md:justify-between px-4 mb-2">
+      <div className="flex justify-center md:justify-end items-center px-4 mb-2 w-full">
         <SearchInput />
       </div>
       <Suspense
