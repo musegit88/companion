@@ -47,8 +47,8 @@ const Sidebar = ({ isSubscribed }: SidebarProps) => {
       </div>
       <div
         className={cn(
-          "hidden md:block transition-transform duration-300 ease-in-out",
-          isSidebarOpen ? "w-64 translate-x-0" : "w-0 -translate-x-full"
+          "hidden md:block transition-transform duration-300 ease",
+          isSidebarOpen ? "w-64 transition-[width]" : "w-0 transition-[width]"
         )}
       >
         <div className="w-full dark:bg-[#171717] overflow-x-hidden">
@@ -84,7 +84,7 @@ const Sidebar = ({ isSubscribed }: SidebarProps) => {
                           size="lg"
                           className="flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-400 to-cyan-400"
                         >
-                          Upgrade to CharacterPlus
+                          Upgrade to Companion+
                         </Button>
                       ) : (
                         ""
