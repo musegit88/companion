@@ -22,7 +22,7 @@ export async function GET() {
     if (userSubscription && userSubscription.stripeCustomerId) {
       const stripeSession = await stripe.billingPortal.sessions.create({
         customer: userSubscription.stripeCustomerId,
-        return_url: `${process.env.NEXT_PUBLIC_URL}/settings`,
+        return_url: `${process.env.NEXT_PUBLIC_URL}`,
       });
       return new NextResponse(JSON.stringify({ url: stripeSession.url }));
     }
@@ -32,7 +32,7 @@ export async function GET() {
     const stripeSession = await stripe.checkout.sessions.create({
       success_url: `${process.env.NEXT_PUBLIC_URL}`,
       cancel_url: `${process.env.NEXT_PUBLIC_URL}`,
-      payment_method_types: ["card", "amazon_pay", "paypal", "cashapp"],
+      payment_method_types: ["card", "amazon_pay", "cashapp", "wechat_pay"],
       mode: "subscription",
       billing_address_collection: "auto",
       customer_email: user.emailAddresses[0].emailAddress,
