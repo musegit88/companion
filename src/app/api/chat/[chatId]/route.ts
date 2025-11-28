@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import { CallbackManager } from "@langchain/core/callbacks/manager";
 import { Replicate } from "@langchain/community/llms/replicate";
 import { StreamingTextResponse, LangChainStream } from "ai";

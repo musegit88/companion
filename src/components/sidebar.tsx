@@ -114,10 +114,10 @@ const Sidebar = ({ isSubscribed }: SidebarProps) => {
                       variant="outline"
                       className="w-full rounded-2xl"
                     >
-                      <SignInButton afterSignInUrl={url} />
+                      <SignInButton forceRedirectUrl={url} />
                     </Button>
                     <Button asChild className="w-full rounded-2xl">
-                      <SignUpButton afterSignInUrl={url} />
+                      <SignUpButton forceRedirectUrl={url} />
                     </Button>
                   </SignedOut>
                 </div>

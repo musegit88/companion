@@ -1,5 +1,5 @@
 import db from "@/lib/prismaDb";
-import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import ChatClient from "./_components/chat-client";
 import { Metadata } from "next";
@@ -9,9 +9,11 @@ export async function generateMetadata({
 }: {
   params: { chatId: string };
 }): Promise<Metadata> {
+  const { chatId } = await params;
+
   const character = await db.character.findUnique({
     where: {
-      id: params.chatId,
+      id: chatId,
     },
     include: {
       category: true,
@@ -48,7 +50,8 @@ export async function generateMetadata({
 }
 
 const page = async ({ params }: { params: { chatId: string } }) => {
-  const { userId } = auth();
+  const { userId } = await auth();
+  const { chatId } = await params;
 
   if (!userId) {
     return redirect("/sign-in");
@@ -56,7 +59,7 @@ const page = async ({ params }: { params: { chatId: string } }) => {
 
   const character = await db.character.findUnique({
     where: {
-      id: params.chatId,
+      id: chatId,
     },
     include: {
       messages: {

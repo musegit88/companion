@@ -14,16 +14,18 @@ type HomePageProps = {
 };
 
 export default async function Home({ searchParams }: HomePageProps) {
+  const { categoryId, name } = await searchParams;
+
   const getCategories = async () => {
     return db.category.findMany();
   };
 
   const getCharacters = async () => {
-    return db.character.findMany({
+    return await db.character.findMany({
       where: {
-        categoryId: searchParams.categoryId,
+        categoryId: categoryId,
         name: {
-          startsWith: searchParams.name,
+          startsWith: name,
         },
       },
       orderBy: {
@@ -90,9 +92,7 @@ const CharacterSuspense = async ({
   characterFeatcher: Promise<any>;
 }) => {
   return (await characterFeatcher).map((character: any) => (
-    <>
-      <CharacterCard key={character.id} character={character} />
-    </>
+    <CharacterCard key={character.id} character={character} />
   ));
 };
 

@@ -1,6 +1,6 @@
 import db from "@/lib/prismaDb";
 import CharacterForm from "../_components/character-form";
-import { auth, redirectToSignIn } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import { Metadata } from "next";
 
 export async function generateMetadata({
@@ -51,7 +51,7 @@ const CharacterIdPage = async ({
 }: {
   params: { characterId: string };
 }) => {
-  const { userId } = auth();
+  const { userId, redirectToSignIn } = await auth();
 
   if (!userId) {
     return redirectToSignIn();

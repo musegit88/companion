@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import UserDialog from "./user-dialog";
-import { Bot } from "lucide-react";
 
 type NavbarProps = {
   isSubscribed: boolean;
@@ -55,7 +54,7 @@ const Navbar = ({ isSubscribed }: NavbarProps) => {
             <Loading />
           ) : (
             <Button asChild size="sm">
-              <SignInButton afterSignInUrl={url} />
+              <SignInButton forceRedirectUrl={url} />
             </Button>
           )}
         </SignedOut>

@@ -10,12 +10,12 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#000000",
     icons: [
       {
-        src: "/images/comapnion_192px.png",
+        src: "./images/comapnion_192px.png",
         sizes: "192x192",
         type: "image/png",
       },
       {
-        src: "/images/comapnion_512px.png",
+        src: "./images/comapnion_512px.png",
         sizes: "512x512",
         type: "image/png",
       },
@@ -27,7 +27,7 @@ export default function manifest(): MetadataRoute.Manifest {
         url: "/",
         icons: [
           {
-            src: "/comapnion_192px.png",
+            src: "./images/comapnion_192px.png",
             sizes: "192x192",
             type: "image/png",
           },
@@ -41,7 +41,7 @@ export default function manifest(): MetadataRoute.Manifest {
         sizes: "540x720",
       },
       {
-        src: "/images/screenshot720.png",
+        src: "./images/screenshot720.png",
         type: "image/png",
         sizes: "720x540",
       },
