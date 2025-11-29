@@ -6,14 +6,16 @@ import { Skeleton } from "@/components/ui/skeleton";
 import db from "@/lib/prismaDb";
 import { Suspense } from "react";
 
-type HomePageProps = {
-  searchParams: {
-    categoryId: string;
-    name: string;
-  };
-};
+type HomePageProps = Promise<{
+  categoryId: string;
+  name: string;
+}>;
 
-export default async function Home({ searchParams }: HomePageProps) {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: HomePageProps;
+}) {
   const { categoryId, name } = await searchParams;
 
   const getCategories = async () => {

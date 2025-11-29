@@ -4,10 +4,14 @@ import { redirect } from "next/navigation";
 import ChatClient from "./_components/chat-client";
 import { Metadata } from "next";
 
+type Params = Promise<{
+  chatId: string;
+}>;
+
 export async function generateMetadata({
   params,
 }: {
-  params: { chatId: string };
+  params: Params;
 }): Promise<Metadata> {
   const { chatId } = await params;
 
@@ -49,7 +53,7 @@ export async function generateMetadata({
   };
 }
 
-const page = async ({ params }: { params: { chatId: string } }) => {
+const page = async ({ params }: { params: Params }) => {
   const { userId } = await auth();
   const { chatId } = await params;
 
