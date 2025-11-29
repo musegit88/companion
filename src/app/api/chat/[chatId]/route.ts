@@ -8,10 +8,12 @@ import { MemoryManager } from "@/lib/memory";
 import { rateLimit } from "@/lib/rate-limit";
 import db from "@/lib/prismaDb";
 
-export async function POST(
-  req: Request,
-  { params }: { params: { chatId: string } }
-) {
+type Params = Promise<{
+  chatId: string;
+}>;
+
+export async function POST(req: Request, { params }: { params: Params }) {
+  const chatId = (await params).chatId;
   try {
     const { prompt } = await req.json();
     const user = await currentUser();
@@ -29,7 +31,7 @@ export async function POST(
     // Add the prompt to database
     const character = await db.character.update({
       where: {
-        id: params.chatId,
+        id: chatId,
       },
       data: {
         messages: {
@@ -129,7 +131,7 @@ export async function POST(
       memoryManager.writeToHistory("" + response.trim(), characterKey);
       await db.character.update({
         where: {
-          id: params.chatId,
+          id: chatId,
         },
         data: {
           messages: {
