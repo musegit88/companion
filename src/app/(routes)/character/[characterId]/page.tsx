@@ -3,11 +3,15 @@ import CharacterForm from "../_components/character-form";
 import { auth } from "@clerk/nextjs/server";
 import { Metadata } from "next";
 
+type CharacterPageProps = {
+  params: {
+    characterId: string;
+  };
+};
+
 export async function generateMetadata({
   params,
-}: {
-  params: { characterId: string };
-}): Promise<Metadata> {
+}: CharacterPageProps): Promise<Metadata> {
   const { characterId } = await params;
   const character = await db.character.findUnique({
     where: {
@@ -47,11 +51,7 @@ export async function generateMetadata({
   };
 }
 
-const CharacterIdPage = async ({
-  params,
-}: {
-  params: { characterId: string };
-}) => {
+const CharacterIdPage = async ({ params }: CharacterPageProps) => {
   const { userId, redirectToSignIn } = await auth();
   const { characterId } = await params;
 
