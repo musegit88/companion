@@ -8,9 +8,10 @@ export async function generateMetadata({
 }: {
   params: { characterId: string };
 }): Promise<Metadata> {
+  const { characterId } = await params;
   const character = await db.character.findUnique({
     where: {
-      id: params.characterId,
+      id: characterId,
     },
     include: {
       category: true,
@@ -52,6 +53,7 @@ const CharacterIdPage = async ({
   params: { characterId: string };
 }) => {
   const { userId, redirectToSignIn } = await auth();
+  const { characterId } = await params;
 
   if (!userId) {
     return redirectToSignIn();
@@ -59,7 +61,7 @@ const CharacterIdPage = async ({
 
   const character = await db.character.findUnique({
     where: {
-      id: params.characterId,
+      id: characterId,
       userId,
     },
   });
