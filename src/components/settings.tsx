@@ -31,9 +31,7 @@ const SettingsMenu = ({ isSubscribed }: SettingMenuProps) => {
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>
-              <h2 className="text-left">Settings</h2>
-            </DialogTitle>
+            <DialogTitle>Settings</DialogTitle>
           </DialogHeader>
           <Separator />
           <div className="flex space-x-8">
