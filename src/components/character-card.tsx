@@ -19,7 +19,8 @@ const CharacterCard = ({ character }: CharacterProps) => {
           src={character.imageUrl}
           alt={character.name}
           fill
-          className="aspect-video object-cover hover:scale-y-105 hover:scale-x-105 hover:origin-center transition"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="aspect-video object-cover hover:scale-y-105 hover:scale-x-105 hover:origin-center"
         />
       </div>
       <div className="absolute bg-slate-800/40 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between w-full p-2 text-white">
