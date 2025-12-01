@@ -5,6 +5,7 @@ import qs from "query-string";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
+import { Badge } from "./ui/badge";
 
 type CategoriesProps = {
   data: Category[];
@@ -33,26 +34,26 @@ const Categories = ({ data }: CategoriesProps) => {
 
   return (
     <div className="flex w-full overflow-x-auto space-x-2 p-1">
-      <Button
-        size="sm"
+      <Badge
         onClick={() => handleClick(undefined)}
         className={cn(
-          categoryId == undefined && "bg-slate-400 hover:bg-slate-400"
+          "bg-accent border-input text-black dark:text-white cursor-pointer",
+          categoryId == undefined && "border-black dark:border-white"
         )}
       >
         All
-      </Button>
+      </Badge>
       {data?.map((category) => (
-        <Button
-          size="sm"
+        <Badge
           key={category.id}
           onClick={() => handleClick(category.id)}
           className={cn(
-            category.id === categoryId && "bg-slate-400 hover:bg-slate-400"
+            "bg-accent border-input text-black dark:text-white cursor-pointer",
+            category.id === categoryId && "border-black dark:border-white"
           )}
         >
           {category.name}
-        </Button>
+        </Badge>
       ))}
     </div>
   );
