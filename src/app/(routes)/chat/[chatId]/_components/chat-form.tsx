@@ -35,7 +35,7 @@ const ChatForm = ({
             placeholder="Type a message"
             className="border-none outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0"
           />
-          <Button disabled={isLoading} variant="ghost">
+          <Button disabled={!input || isLoading} variant="ghost">
             {isLoading ? (
               <Loader2 className="w-5 h-5 animate-spin" />
             ) : (
