@@ -290,7 +290,10 @@ const CharacterForm = ({ initialData, categories }: CharacterFormProps) => {
             )}
           />
           <div className="flex justify-end">
-            <Button type="submit" disabled={isLoading}>
+            <Button
+              type="submit"
+              disabled={!form.formState.isDirty || isLoading}
+            >
               {initialData ? "Edit" : "Create"}
             </Button>
           </div>
