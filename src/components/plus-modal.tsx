@@ -13,17 +13,23 @@ import { Button } from "@/components/ui/button";
 import { usePlusModal } from "../../hooks/usePlusModal";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { LoaderCircle } from "lucide-react";
 
 const PlusModal = () => {
   const plusModal = usePlusModal();
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
   const handleSubscribe = async () => {
+    setLoading(true);
     try {
       const response = await fetch("/api/stripe");
       const data = await response.json();
       router.push(data.url);
     } catch (error) {
       toast.error("Something went wrong");
+    } finally {
+      setLoading(false);
     }
   };
   const [isClient, setIsClient] = useState(false);
@@ -49,8 +55,12 @@ const PlusModal = () => {
             <p className="text-2xl">
               $12<span className="text-sm font-normal">.99 / mo</span>
             </p>
-            <Button variant="plus" onClick={handleSubscribe}>
-              Subscribe
+            <Button disabled={loading} variant="plus" onClick={handleSubscribe}>
+              {loading ? (
+                <LoaderCircle className="animate-spin" />
+              ) : (
+                "Subscribe"
+              )}
             </Button>
           </div>
         </DialogHeader>
