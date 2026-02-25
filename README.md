@@ -52,7 +52,7 @@ Inspiration [`a16z-infra`](https://github.com/a16z-infra/companion-app/blob/main
 1. Clone the repository:
 
 ```
-git clone https://github.com/yourusername/ai-companion-webapp.git
+git clone https://github.com/musegit88/companion.git
 cd ai-companion-webapp
 ```
 
