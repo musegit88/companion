@@ -69,7 +69,7 @@ export async function POST(req: Request, { params }: { params: Params }) {
 
     const similarDocs = await memoryManager.vectorSearch(
       recentChatHistory,
-      characterName
+      characterName,
     );
 
     let relevantHistory = "";
@@ -87,13 +87,12 @@ export async function POST(req: Request, { params }: { params: Params }) {
           },
           method: "POST",
           body: JSON.stringify(input),
-        }
+        },
       );
       const result = await response.json();
       return result;
     };
-
-    const result = await run("@cf/meta/llama-2-7b-chat-int8", {
+    const result = await run("@cf/meta/llama-3.1-8b-instruct-fp8", {
       messages: [
         {
           role: "system",
@@ -106,7 +105,7 @@ export async function POST(req: Request, { params }: { params: Params }) {
         
                 Below are relevant details about ${characterName}'s past and the conversation you are in.
                 ${relevantHistory}
-                   `
+                   `,
           ),
         },
         {
